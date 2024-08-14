@@ -32,8 +32,7 @@ fn coords(n: u32) -> (i32, i32) {
     let mut y = -x;
     if m2 % 2 == 0 {
         x += n - m * (m + 1);
-    }
-    if m2 % 2 == 1 {
+    } else {
         y += n - m * (m + 1);
     }
     if m % 2 == 1 {
@@ -51,7 +50,7 @@ pub fn part_one(input: &str) -> Option<u32> {
 
 pub fn part_two(input: &str) -> Option<u32> {
     let n = input.trim().parse::<u32>().unwrap();
-    let mut map: HashMap<(i32, i32), u32> = HashMap::new();
+    let mut map = HashMap::new();
     map.insert((0, 0), 1);
     for (x, y) in (1..).map(coords) {
         let new: u32 = (x - 1..=x + 1)
